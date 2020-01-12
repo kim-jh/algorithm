@@ -1,0 +1,35 @@
+//segtree
+struct seg_node{int num,l,r;};
+seg_node arr[262144];
+int idx=131072;
+void Find(int x,int y,int z){
+	if (arr[z].l>y || arr[z].r<x)
+		return;
+	if (arr[z].l>=x && arr[z].r<=y){
+		Max=max(Max,arr[z].Max);
+		Min=min(Min,arr[z].Min);
+	}
+	else {
+		Find(x,y,z*2);Find(x,y,z*2+1);
+	}	
+}
+void Up(int x,int y){
+	x+=idx;
+	while(x>0){
+		if(arr[x].Max==0||arr[x].Max<y)	arr[x].Max=y;
+		if(arr[x].Min==0||arr[x].Min>y)	arr[x].Min=y;
+		x/=2;
+	}
+}
+int main(){
+	arr[1].l=0;
+	arr[1].r=idx-1;
+	for(int i=2;i<idx*2;i+=2){
+		int l=arr[i/2].l,r=arr[i/2].r;
+		int mid=(l+r)/2;
+		arr[i].l=l;
+		arr[i].r=mid;
+		arr[i+1].l=mid+1;
+		arr[i+1].r=r;
+	}
+}
