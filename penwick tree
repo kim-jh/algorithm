@@ -1,3 +1,9 @@
+/*
+나만의 이해
+팬윅트리의 인덱스 숫자는 (처음나온 1 앞의 숫자의합)+1 부터 그수까지 합임
+즉 00011000 는 00010001 부터 00011000까지의합
+*/
+
 long long penwick_tree[size+1];
 long long arr[size+1];
 void update(int x, long long dif) {
