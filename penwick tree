@@ -2,6 +2,10 @@
 나만의 이해
 팬윅트리의 인덱스 숫자는 (처음나온 1 앞의 숫자의합)+1 부터 그수까지 합임
 즉 00011000 는 00010001 부터 00011000까지의합
+그래서 넣을때는 맨뒤에있는 1 만큼씩 더해감
+예)1010 은 0101->0110->1000
+뺄때는 뒤에서부터 1의 개수를 줄여나가며 뺴옴
+예)1110 은 1110+1100+1000
 */
 
 long long penwick_tree[size+1];
@@ -9,14 +13,14 @@ long long arr[size+1];
 void update(int x, long long dif) {
     while (x <= size) {
         data[x] += dif;
-    	x += (x&-x);
+    	x += (x&-x);//(x&-x)->맨뒤 1을 찾는방법
     }
 }
 long long sum(int x) {
     long long ret = 0;
     while (x) {
         ret += penwick_tree[x];
-        x &= x - 1;
+        x &= x - 1;//뒤에서부터 1빼는 방법
     }
     return ret;
 }
