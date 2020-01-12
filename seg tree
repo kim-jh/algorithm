@@ -1,4 +1,4 @@
-//segtree
+//seg tree
 struct seg_node{int num,l,r;};
 seg_node arr[262144];
 int idx=131072;
