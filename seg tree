@@ -22,8 +22,8 @@ void Up(int x,int y){
 	}
 }
 int main(){
-	arr[1].l=0;
-	arr[1].r=idx-1;
+	arr[1].l=1;
+	arr[1].r=idx;
 	for(int i=2;i<idx*2;i+=2){
 		int l=arr[i/2].l,r=arr[i/2].r;
 		int mid=(l+r)/2;
