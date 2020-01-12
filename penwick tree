@@ -1,7 +1,7 @@
-long long penwick_tree[1048576];
-long long arr[1048576];
+long long penwick_tree[size+1];
+long long arr[size+1];
 void update(int x, long long dif) {
-    while (x <= 1048576) {
+    while (x <= size) {
         data[x] += dif;
     	x += (x&-x);
     }
